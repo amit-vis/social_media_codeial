@@ -1,0 +1,16 @@
+#main-footer {
+  background-color: #757475;
+  height: 60px;
+  color: white;
+  border-top: 1px solid; }
+  #main-footer a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin-left: 25%;
+    margin-top: -2.5%; }
+  #main-footer #profile-footer {
+    margin-top: -.05%; }
+  #main-footer #rights-reserved {
+    width: 20%;
+    margin-left: 3%; }

@@ -1,0 +1,14 @@
+#header {
+  background-color: blueviolet;
+  display: flex; }
+  #header #logo {
+    color: white;
+    margin-left: 3%; }
+  #header #list {
+    display: flex;
+    list-style: none;
+    margin-left: 73%;
+    margin-top: 2%; }
+  #header #list a {
+    color: white;
+    text-decoration: none; }
