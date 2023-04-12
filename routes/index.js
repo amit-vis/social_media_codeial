@@ -10,6 +10,7 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));
 router.use('/likes', require('./likes'));
 router.use('/post', require('./post'));
+router.use('/comment', require('./comment'));
 
 //for any further routes access from here
 //router.use('/routerName', require('./routerFileName'))
