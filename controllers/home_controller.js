@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 
 //setup the cotroller function.
 module.exports.home = async function(req,res){
@@ -19,10 +20,12 @@ module.exports.home = async function(req,res){
                 path: 'user'
             }
         })
-        res.render('home',{
-            title: 'Codeial | Home',
-            post
-        })
+        const user = await User.find({})
+            res.render('home',{
+                title: 'Codeial | Home',
+                post,
+                all_users: user
+            })
     } catch(err){
         console.log('error', err)
     }
