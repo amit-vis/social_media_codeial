@@ -1,4 +1,5 @@
 
+const comment = require('../models/comment');
 const Comment = require('../models/comment');
 const Post = require('../models/post');
 
@@ -7,7 +8,6 @@ module.exports.create = function(req, res){
      Post.findById(req.body.post)
      .then(post=>{
         if (post){
-            console.log(post)
             Comment.create({
                 content: req.body.content,
                 post: req.body.post,
@@ -15,8 +15,20 @@ module.exports.create = function(req, res){
             })
             .then(comment=>{
                 post.comments.push(comment);
-                post.save();
-                res.redirect('/');
+                post.save()
+                .then(()=>{
+                    if(req.xhr){
+                        return res.status(200).json({
+                            data:{
+                                comment: comment
+                            },
+                            message: 'comment created!'
+                        });
+                    }
+                    else{
+                        res.redirect('/');
+                    }
+                })
             })
             .catch(err=>{
                 console.log('error',err);
@@ -39,7 +51,6 @@ module.exports.destroy = async function(req, res){
             await Post.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}});
             return res.redirect('back');
         }else if(comment && comment.post.user == req.user.id){
-            console.log('hii')
             let postId = comment.post;
             await comment.deleteOne();
             await Post.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}});
