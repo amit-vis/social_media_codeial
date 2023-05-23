@@ -38,10 +38,13 @@ module.exports.passwordReset = async function (req, res) {
 
 module.exports.recoryMail = async function (req, res) {
     try {
-        await Reset.findOne({ acessToken: req.query.acessToken })
-        console.log('Token is here2')
+        const resetToken = await Reset.findOne({ acessToken: req.query.acessToken })
+        if(resetToken.isverfied==false){
+    
+            res.redirect('/Error/Error')
+        }
         //tdo- add a check here
-        res.render('recover', { title: "reset", token: req.query.acessToken });
+        res.render('recover', { title: "reset", token: req.query.acessToken, isverfied: true });
 
 
     } catch (err) {

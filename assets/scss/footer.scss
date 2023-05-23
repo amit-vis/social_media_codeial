@@ -1,8 +1,13 @@
 #layout-footer{
     color: white;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
     a{
         color: white;
         text-decoration: none;
+        font-size: 15px;
     }
 
     background: grey;
@@ -14,5 +19,8 @@
         ul{
             list-style: none;
         }
+    }
+    p{
+        font-size: 15px;
     }
 }

@@ -24,7 +24,7 @@ class ToggleLike{
                 }
 
                 $(self).attr('data-likes', likesCount);
-                $(self).html(`${likesCount} Like`);
+                $(self).html(`${likesCount} <i class="fa-solid fa-heart"></i>`);
             })
             .fail(function(errData){
                 console.log('error in completing the request');

@@ -6,6 +6,9 @@
         background: #2196f3;
         color: white;
         box-shadow: 1px 1px 1px 1px lightgrey;
+        top: 0;
+        position: fixed;
+        width: 100%;
 
         .mini-logo{
             p{
@@ -20,6 +23,9 @@
                 margin: 5% 5px;
                 display: flex;
                 list-style: none;
+                margin-right: 50px;
+                width: 100%;
+                
                 li{
                     margin-right: 10px;
                 }

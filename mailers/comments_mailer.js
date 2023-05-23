@@ -15,5 +15,6 @@ exports.newComment = (comment) =>{
             return;
         }
         console.log('message is sent', info);
+        return;
     });
 }
