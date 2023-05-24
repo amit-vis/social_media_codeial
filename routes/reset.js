@@ -9,5 +9,7 @@ router.post('/forgot', resetController.passwordReset);
 router.get('/recovery', resetController.recoryMail);
 router.post('/recovery', resetController.recoveryPass);
 
+router.get('/error', resetController.error);
+
 
 module.exports = router;

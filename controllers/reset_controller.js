@@ -39,9 +39,9 @@ module.exports.passwordReset = async function (req, res) {
 module.exports.recoryMail = async function (req, res) {
     try {
         const resetToken = await Reset.findOne({ acessToken: req.query.acessToken })
-        if(resetToken.isverfied==false){
+        if(!resetToken || resetToken.isverfied==false){
     
-            res.redirect('/Error/Error')
+            res.redirect('/reset/error')
         }
         //tdo- add a check here
         res.render('recover', { title: "reset", token: req.query.acessToken, isverfied: true });
@@ -74,3 +74,10 @@ module.exports.recoveryPass = async function (req, res) {
         return res.redirect('back');
     }
 }
+
+module.exports.error = function(req, res){
+    return res.render('error', {
+        title: 'Error 404',
+        message: 'Token is expired'
+    });
+};

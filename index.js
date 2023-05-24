@@ -55,17 +55,12 @@ app.use(session({
         maxAge: (1000 * 60 * 100)
     },
       //mongo store use to store the session cookie in the db
-      store: MongoStore.create(
-        {
-        mongoUrl: "mongodb://0.0.0.0:27017/codeial",
+      store: MongoStore.create({
+        mongoUrl: 'mongodb://0.0.0.0:27017/codeial_new',
         autoRemove: 'disabled'
-       },
-       function(err){
-        console.log(err || 'connect mongodb_setup ok');
-       }
-    ),
-})
-);
+      }),
+    })
+  );
 
 app.use(passport.initialize());
 app.use(passport.session());
