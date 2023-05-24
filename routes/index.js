@@ -13,6 +13,7 @@ router.use('/comments', require('./comments'));
 
 router.use('/reset', require('./reset'));
 router.use('/likes', require('./likes'));
+router.use('/friendship', require('./friendship'));
 
 
 router.use('/api', require('./api'));

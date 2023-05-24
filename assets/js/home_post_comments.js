@@ -108,4 +108,12 @@ class PostComments{
 
         });
     }
+    
+    converToAjax(){
+        let deleteLinks = $(' .delete-comment-button');
+        for(deleteLink of deleteLinks){
+            deleteComment(deleteLink);
+        }
+    }
+    
 }

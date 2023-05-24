@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/css/user_profile.css">
+<div>
 
+    <h1>User Profile</h1>
 <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
 
 
@@ -18,4 +20,19 @@
     <!-- else show only the profile info -->
     <p><%= profile_user.name %></p>
     <p><%= profile_user.email %></p>
+
+    <small>
+        <a href="/friendship/create/?to=<%=profile_user.id%>" class="toggle-friendship-btn">add</a>
+    </small>
 <%} %>
+</div>
+
+<script src="/js/toggle_friendship.js">
+</script>
+<script>
+    $('.toggle-friendship-btn').each(function () {
+        let self = this;
+        console.log(self);
+        let toggleFriendship = new ToggleFriendship(self);
+    });
+</script>
