@@ -1,14 +1,17 @@
 #layout-footer{
     color: white;
-    a{
-        color: white;
-        text-decoration: none;
-    }
-
     background: grey;
     padding: 5px 10px;
     display: flex;
     justify-content: flex-start;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    
+    a{
+        color: white;
+        text-decoration: none;
+    }
 
     .footer-nav{
         ul{
