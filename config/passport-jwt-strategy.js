@@ -3,25 +3,39 @@ const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const User = require('../models/user');
+const env = require('./environment');
 
 
+console.log(env.secret_key)
 let opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'codeial'
-}
+    secretOrKey: env.secret_key,
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
+};
 
 
-passport.use(new JWTStrategy(opts, function(jwtPayLoad, done){
+passport.use(new JWTStrategy(opts, async function (jwtPayLoad, done) {
 
-    User.findById(jwtPayLoad._id, function(err, user){
-        if (err){console.log('Error in finding user from JWT'); return;}
+    // User.findById(jwtPayLoad._id, function(err, user){
+    //     if (err){console.log('Error in finding user from JWT'); return;}
 
-        if (user){
+    //     if (user){
+    //         return done(null, user);
+    //     }else{
+    //         return done(null, false);
+    //     }
+    // })
+    try {
+        const user = await User.findById(jwtPayLoad._id);
+        console.log("here is user", user)
+        if (user) {
             return done(null, user);
-        }else{
-            return done(null, false);
+        } else {
+            return done(null, false)
         }
-    })
+
+    } catch (error) {
+        console.log('Error in finding user from JWT', error);
+    }
 
 }));
 
