@@ -84,7 +84,7 @@ app.use(session({
   },
   //mongo store use to store the session cookie in the db
   store: MongoStore.create({
-    mongoUrl: 'mongodb://0.0.0.0:27017/codeial_new',
+    mongoUrl: `mongodb://localhost:27017/${env.db}`,
     autoRemove: 'disabled'
   }),
 })
